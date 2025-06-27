@@ -10,6 +10,7 @@ mysqlclient = "*"
 django-cors-headers = "*"
 pillow = "*"
 django = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
