@@ -31,8 +31,7 @@ urlpatterns = [
     path('delicieux/booking/', include(router.urls)),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
-
-] 
+]
 
 # 🔽 Add media serving in development
 if settings.DEBUG:
