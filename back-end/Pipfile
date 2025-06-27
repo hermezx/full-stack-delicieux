@@ -11,6 +11,7 @@ django-cors-headers = "*"
 pillow = "*"
 django = "*"
 dj-database-url = "*"
+gunicorn = "*"
 
 [dev-packages]
 
