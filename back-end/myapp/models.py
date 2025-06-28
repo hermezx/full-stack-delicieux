@@ -10,7 +10,6 @@ class Menu(models.Model):
     title = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField(default=5)
-    image = models.ImageField(upload_to='menu_images/', null=True, blank=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     
 
