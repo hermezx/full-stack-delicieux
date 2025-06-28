@@ -18,7 +18,7 @@ __pycache__/
 .env.*
 
 # Django media and static files (optional)
-media/
+# media/
 staticfiles/
 
 # Pipenv
