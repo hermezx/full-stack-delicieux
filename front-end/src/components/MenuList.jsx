@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
+import chicken from "../assets/chicken.webp";
+import burger from "../assets/burger.webp";
+import salad from "../assets/salad.webp";
+import pizza from "../assets/pizza.webp";
 
 const MenuList = () => {
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
 
-  const backendBaseUrl =
-    "https://full-stack-delicieux-production.up.railway.app";
-
-  function getImageUrl(imagePath) {
-    if (!imagePath) return ""; // guard for null/undefined
-    if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-      return imagePath;
-    }
-    return `${backendBaseUrl}/media/${imagePath}`;
-  }
+  const imageMap = {
+    Chicken: chicken,
+    Burger: burger,
+    Pizza: pizza,
+    Salad: salad,
+  };
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -47,7 +47,7 @@ const MenuList = () => {
           {menu.map((item) => (
             <div key={item.id} className="menu-item">
               <img
-                src={getImageUrl(item.image)}
+                src={imageMap[item.name]}
                 alt={item.name}
                 className="menu-img"
               />
