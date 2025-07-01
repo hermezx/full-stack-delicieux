@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
-import chicken from "../assets/chicken.webp";
-import burger from "../assets/burger.webp";
-import salad from "../assets/salad.webp";
-import pizza from "../assets/pizza.webp";
+import Chicken from "../assets/chicken.webp";
+import Burger from "../assets/burger.webp";
+import Salad from "../assets/salad.webp";
+import Pizza from "../assets/pizza.webp";
 
 const MenuList = () => {
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
+  const fallbackImage = Salad;
 
   const imageMap = {
-    Chicken: chicken,
-    Burger: burger,
-    Pizza: pizza,
-    Salad: salad,
+    chicken: Chicken,
+    burger: Burger,
+    pizza: Pizza,
+    salad: Salad,
   };
 
   useEffect(() => {
@@ -44,23 +45,27 @@ const MenuList = () => {
           Please select what tempts you and enjoy!
         </p>
         <div className="menu-list-container">
-          {menu.map((item) => (
-            <div key={item.id} className="menu-item">
-              <img
-                src={imageMap[item.name]}
-                alt={item.name}
-                className="menu-img"
-              />
-              <div className="menu-info">
-                <h3 className="menu-title">{item.title}</h3>
-                <p className="menu-price">₱{item.price}</p>
-                <p className="menu-description">{item.description}</p>
-                <button className="menu-button" onClick={() => addToCart(item)}>
-                  Add to Cart
-                </button>
+          {menu.map((item) => {
+            const imgKey = item.title?.trim().toLowerCase();
+            const imgSrc = imageMap[imgKey] || fallbackImage;
+
+            return (
+              <div key={item.id} className="menu-item">
+                <img src={imgSrc} alt={item.title} className="menu-img" />
+                <div className="menu-info">
+                  <h3 className="menu-title">{item.title}</h3>
+                  <p className="menu-price">₱{item.price}</p>
+                  <p className="menu-description">{item.description}</p>
+                  <button
+                    className="menu-button"
+                    onClick={() => addToCart(item)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
