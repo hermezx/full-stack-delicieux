@@ -18,7 +18,7 @@ const CheckoutPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8000/delicieux/orders/", {
+      await axios.post(import.meta.env.VITE_API_ORDER_URL, {
         name,
         address,
         items: cartItems,
@@ -64,9 +64,9 @@ const CheckoutPage = () => {
           <br />
           <div className="co-section3">
             <h3 className="co-total">Total: ₱{total.toFixed(2)}</h3>
-          <button className="co-placeorder" type="submit">
-            Place Order
-          </button>
+            <button className="co-placeorder" type="submit">
+              Place Order
+            </button>
           </div>
         </form>
       </div>
