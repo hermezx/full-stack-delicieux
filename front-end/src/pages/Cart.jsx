@@ -1,7 +1,7 @@
 // components/Cart.jsx
 import { useContext } from "react";
 import { CartContext } from "../CartContext.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import Chicken from "../assets/chicken.webp";
 import Burger from "../assets/burger.webp";
@@ -23,6 +23,16 @@ const Cart = () => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      alert("Please add items to your cart before proceeding to checkout!");
+      return;
+    }
+    navigate("/checkout");
+  };
 
   return (
     <div className="cart-page">
@@ -74,9 +84,9 @@ const Cart = () => {
             </div>
 
             <div className="cart-buttons">
-              <Link className="cart-button checkout" to="/checkout">
+              <button className="cart-button checkout" onClick={handleCheckout}>
                 Proceed to Checkout
-              </Link>
+              </button>
             </div>
           </div>
         </div>
