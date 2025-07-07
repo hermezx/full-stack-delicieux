@@ -81,7 +81,6 @@ body {
   width: 100%;
   height: 1px;
   background-color: black;
-  
 }
 
 .nav-x-button {
@@ -373,7 +372,7 @@ label {
 }
 
 .display-heading {
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 1.75rem;
   font-weight: 500;
 }
@@ -662,7 +661,8 @@ label {
 
 /* Mobile */
 @media (max-width: 600px) {
-  .nav-links, .hidden {
+  .nav-links,
+  .hidden {
     display: none;
     text-align: center;
   }
@@ -770,7 +770,7 @@ label {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    top: 0 ;
+    top: 0;
     right: 0;
     width: 50%;
     background-color: white;
@@ -788,7 +788,9 @@ label {
 
 /* Tablet */
 @media (min-width: 601px) and (max-width: 1024px) {
-  .nav-menu-button, .deco-line, .nav-x-button {
+  .nav-menu-button,
+  .deco-line,
+  .nav-x-button {
     display: none;
   }
   .cart-page {
@@ -887,7 +889,9 @@ label {
 
 /* DESKTOP */
 @media (min-width: 1025px) {
-  .nav-menu-button, .deco-line, .nav-x-button {
+  .nav-menu-button,
+  .deco-line,
+  .nav-x-button {
     display: none;
   }
 }
